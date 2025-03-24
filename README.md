@@ -1,124 +1,109 @@
-# Whisper Transcription App
+# Voice Studio
 
-A full-stack application that provides real-time audio transcription using OpenAI's Whisper model. The application consists of a FastAPI backend for audio processing and a Next.js frontend for a modern, responsive user interface.
+A professional voice recording and production environment management system.
+
+## Overview
+
+Voice Studio is designed to streamline the workflow of voice recording sessions, managing audio assets, and organizing production schedules. This system helps voice actors, audio engineers, and studio managers maintain an efficient and organized recording environment.
 
 ## Features
 
-- Real-time audio transcription using OpenAI's Whisper model
-- Modern, responsive UI built with Next.js and Tailwind CSS
-- RESTful API backend using FastAPI
-- Audio file upload and processing
-- Instant transcription results display
+- Session scheduling and management
+- Audio file organization
+- Project tracking
+- Client management
+- Recording session templates
+- Asset library management
 
-## Tech Stack
+## Getting Started
 
-### Backend
-- Python 3.x
-- FastAPI
-- OpenAI Whisper
-- uvicorn (ASGI server)
-- SQLite database
+### Prerequisites
 
-### Frontend
-- Next.js 15.1.0
-- React 19
-- TypeScript
-- Tailwind CSS
-- Radix UI components
-- Various React hooks and utilities
+- Node.js (v18.0.0 or higher)
+- Modern web browser
+- Audio interface drivers (if applicable)
 
-## Prerequisites
+### Installation
 
-Before running the application, make sure you have the following installed:
-- Python 3.x
-- Node.js (Latest LTS version)
-- pnpm (for frontend package management)
-
-## Installation
-
-### Backend Setup
-
-1. Navigate to the backend directory:
+1. Clone the repository:
 ```bash
-cd backend
+git clone https://github.com/yourusername/voice_studio.git
+cd voice_studio
 ```
 
-2. Install Python dependencies:
+2. Install dependencies:
 ```bash
-pip install -r requirements.txt
+npm install
 ```
 
-### Frontend Setup
-
-1. Navigate to the client directory:
+3. Set up environment variables:
 ```bash
-cd client
+cp .env.example .env
 ```
 
-2. Install dependencies using pnpm:
+4. Start the development server:
 ```bash
-pnpm install
+npm run dev
 ```
-
-## Running the Application
-
-### Start the Backend Server
-
-1. From the backend directory:
-```bash
-python main.py
-```
-The backend server will start at `http://localhost:8000`
-
-### Start the Frontend Development Server
-
-1. From the client directory:
-```bash
-pnpm dev
-```
-The frontend development server will start at `http://localhost:3000`
-
-## API Endpoints
-
-- `GET /`: Health check endpoint
-- `POST /audio/transcribe`: Endpoint for audio file transcription
-  - Accepts audio files (MP3 format)
-  - Returns transcribed text
 
 ## Project Structure
 
 ```
-.
-├── backend/
-│   ├── app/
-│   ├── tests/
-│   ├── main.py
-│   └── requirements.txt
-└── client/
-    ├── app/
-    ├── components/
-    ├── hooks/
-    ├── lib/
-    ├── public/
-    ├── styles/
-    └── types/
+voice_studio/
+├── src/              # Source files
+├── public/           # Static files
+├── assets/           # Media assets
+├── components/       # React components
+├── styles/           # CSS/SCSS files
+└── utils/            # Utility functions
 ```
+
+## Usage
+
+[Add specific usage instructions and examples here]
 
 ## Development
 
-- The backend uses FastAPI for efficient API development with automatic OpenAPI documentation
-- The frontend is built with Next.js and uses modern React patterns
-- Styling is handled through Tailwind CSS with custom components
-- Type safety is ensured through TypeScript
+### Scripts
 
-## Contributing
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run test` - Run tests
+- `npm run lint` - Run linter
+
+### Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## Audio File Management
+
+### Supported Formats
+
+- WAV (`.wav`)
+- MP3 (`.mp3`)
+- AIFF (`.aiff`)
+- FLAC (`.flac`)
+
+### Best Practices
+
+- Always maintain backup copies of session files
+- Use consistent naming conventions for files
+- Store high-quality master files separately from delivery formats
 
 ## License
 
-This project is open source and available under the MIT License. # voice-studio
+[Choose an appropriate license for your project]
+
+## Contact
+
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+Project Link: [https://github.com/yourusername/voice_studio](https://github.com/yourusername/voice_studio)
+
+## Acknowledgments
+
+- [List any third-party tools or libraries you're using]
+- [Credit any inspirations or resources] 
