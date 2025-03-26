@@ -132,15 +132,19 @@ export default function StudioPage() {
       }
 
       // Transcribe the audio
-      const transcribeFormData = new FormData()
-      transcribeFormData.append("audio_id", uploadData.audio_id)
+      const transcribeFormData = new FormData();
+      // 여기서 audioFile.file을 "audio.mp3"라는 이름으로 추가합니다.
+      transcribeFormData.append("file", audioFile.file, "audio.mp3");
 
-      const transcribeResponse = await fetch("/api/transcribe", {
+      console.log(transcribeFormData);
+
+      const transcribeResponse = await fetch("/api/voices/transcribe", {
         method: "POST",
         body: transcribeFormData,
-      })
-
+      });
       const transcriptionData = await transcribeResponse.json()
+
+      console.log(transcriptionData)
 
       if (!transcribeResponse.ok) {
         throw new Error(transcriptionData.error || "Failed to transcribe audio")

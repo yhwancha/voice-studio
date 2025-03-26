@@ -1,30 +1,26 @@
-from fastapi import FastAPI, UploadFile, File
-import uvicorn
-import whisper
-import tempfile
-import os
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
-model = whisper.load_model("turbo")
+from app.core.config import settings
+from app.api.api import api_router
+from app.db.base_class import Base
+from app.db.session import engine
 
-@app.get("/")
-async def root():
-    return {"message": "Hello, FastAPI!"}
+# Create database tables
+Base.metadata.create_all(bind=engine)
 
-@app.post("/audio/transcribe")
-async def transcribe_audio(file: UploadFile = File(...)):
-    # 파일을 임시로 저장
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
-        tmp.write(await file.read())
-        audio_path = tmp.name
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+)
 
-    result = model.transcribe(audio_path)
+# CORS 미들웨어 설정
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.BACKEND_CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-    # 임시 파일 제거
-    os.remove(audio_path)
-
-    # 결과 텍스트만 반환
-    return {"text": result["text"]}
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# API 라우터 추가
+app.include_router(api_router, prefix=settings.API_V1_STR) 
